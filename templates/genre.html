@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genero Literario</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'genre.css')}}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>Gêneros Literários</li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="genre-section">
+  <!--chave, valor, dicionario (o .items é um comando nativo do dicionario python para acessar chave e valores)-->
+  {% for genre_name, books in genres.items() %}
+    <input type="checkbox" id="{{ genre_name|lower }}-toggle" hidden>
+    <label class="genre-card" for="{{ genre_name|lower }}-toggle">
+      <h2>{{ genre_name }}</h2>
+      <div class="books-container">
+        {% for book in books %}
+          <div class="books">
+            <img src="{{ url_for('static', filename='img/' + book.get_img()) }}">
+            <a>{{ book.get_title() }}</a>
+          </div>
+        {% endfor %}
+      </div>
+    </label>
+  {% endfor %}
+</div>
+
+  <footer>
+        <h1>Página de Gêneros Literários</h1>
+        <li><a href="{{url_for('home')}}">Página Inicial</a></li>
+        <li><a href="{{url_for('authors')}}">Autores</a></li>
+  </footer>
+
+</body>
+</html>

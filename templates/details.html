@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes - {{book.get_title()}}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'details.css')}}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>Saiba mais sobre {{book.get_title()}}</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main">
+        <img src="{{url_for('static', filename = 'img/' + book.get_img())}}" alt="img">
+        <div class="info">
+            <h1>{{book.get_title()}}</h1>
+            <p>Ano: {{book.get_year()}}</p>
+            <p>Autor: {{book.get_author()}}</p>
+            <p>Gênero: {{book.get_genre()}}</p>
+            <p>Sinopse: {{book.get_about()}}</p>
+        </div>
+    </div>
+
+    <footer>
+        <h1>Página de Detalhes</h1>
+        <li><a href="{{url_for('home')}}">Página Inicial</a></li>
+        <li><a href="{{url_for('genre')}}">Gêneros Literários</a></li>
+        <li><a href="{{url_for('authors')}}">Autores</a></li>
+    </footer>
+</body>
+</html>

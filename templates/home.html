@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'home.css')}}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>Portal Literário</li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main">
+        <h1>Biblioteca</h1>
+        <div class="container">
+            {% 
+                 book in book_list %}
+                <div class="books">
+                    <img src="{{url_for('static', filename = 'img/' + book.get_img())}}" alt="img">
+                    <h1>{{book.get_title()}}</h1>
+                    <p>{{book.get_year()}}</p>
+                    <a href="{{url_for('details', id = book.get_id())}}">Saiba mais</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <footer>
+        <h1>Página Inicial</h1>
+        <li><a href="{{url_for('genre')}}">Gêneros Literários</a></li>
+        <li><a href="{{url_for('authors')}}">Autores</a></li>
+    </footer>
+</body>
+</html>

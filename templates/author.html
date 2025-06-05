@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autores</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'author.css')}}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>Portal Literário</li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main">
+    {%for author in authors%}
+        <div class="card">
+            <img src="{{url_for('static', filename = 'img/' + author.get_photo_author())}}" alt="">
+            <h2>{{author.get_author()}}</h2>
+            <p>{{author.get_about_author()}}</p>
+            <a href="{{url_for('details', id = author.get_id())}}">{{author.get_title()}}</a>
+        </div>
+    {%endfor%}
+    </section>
+
+    <footer>
+        <h1>Página de Detalhes</h1>
+        <li><a href="{{url_for('home')}}">Página Inicial</a></li>
+        <li><a href="{{url_for('genre')}}">Gêneros Literários</a></li>
+    </footer>
+</body>
+</html>
