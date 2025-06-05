@@ -103,7 +103,7 @@ def details(id):
     for book in book_list:
         if book.get_id() == id:
             return render_template('details.html', book = book)
-    return 'Palestrante não encontrado'
+    return 'Autor não encontrado'
 
 #* selecionar os gêneros:
 # dicionário generos, onde cada chave é o nome do gênero (fantasia) e o valor é uma lista com os livros pertencentes a aquele gênero
