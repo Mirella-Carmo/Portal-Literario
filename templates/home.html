@@ -18,8 +18,7 @@
     <section class="main">
         <h1>Biblioteca</h1>
         <div class="container">
-            {% 
-                 book in book_list %}
+            {% for book in book_list %}
                 <div class="books">
                     <img src="{{url_for('static', filename = 'img/' + book.get_img())}}" alt="img">
                     <h1>{{book.get_title()}}</h1>
